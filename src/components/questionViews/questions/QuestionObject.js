@@ -87,7 +87,7 @@ export const questions = [
     ],
   },
   {
-    question: "7. How much of your IT-products are enviromantally certified?",
+    question: "7. How much of your IT-products are enviromentally certified?",
     alternatives: [
       { alt: "100%", val: "checked1", score: 4, name: "input1" },
       { alt: "80-99%", val: "checked2", score: 3, name: "input2" },

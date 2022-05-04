@@ -1,9 +1,20 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 const QuestionComponent = (props) => {
+  const [nextBtn, setNextBtn]=useState({disabled:true})
+  useEffect(() => {
+    if(props.answers.score.length===0){
+      setNextBtn({disabled:true})
+    }
+    else{
+      setNextBtn({disabled:false})
+    }
+  }, [props.questionCounter.question, props.answers.score ])
+  
 
   const nextQuestion = () => {
     props.setQuestionCounter({ question: props.questionCounter.question + 1 });
+    
   };
   const previousQuestion = () => {
       props.setQuestionCounter({ question: props.questionCounter.question - 1 });
@@ -13,6 +24,7 @@ const QuestionComponent = (props) => {
       props.setRunTestButton({disabled:false})
   };
   const onChangeRadio=(e, q)=>{
+    setNextBtn({disabled:false})
     let tempState = [...props.allAnswers];
     let tempElement = { ...tempState[props.questionCounter.question] }
     if(e.target.value==="checked1"){
@@ -38,11 +50,12 @@ const QuestionComponent = (props) => {
     let tempState = [...props.allAnswers];
     let tempElement = { ...tempState[props.questionCounter.question] }
     if(e.target.checked){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, score:[...props.answers.score,{name:e.target.name, score: q.score}]}
+      tempElement = {...props.answers, [e.target.value]:e.target.checked, score:[...props.answers.score,{name:e.target.name, score: q.score}]}
+      setNextBtn({disabled:false})
     }
     else{
         const scoreArr=[...props.answers.score]
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, score:scoreArr.filter(o => o.name !== e.target.name)}       
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, score:scoreArr.filter(o => o.name !== e.target.name)} 
     }
     tempState[props.questionCounter.question] = tempElement
     props.setAnswers(tempState)
@@ -62,16 +75,14 @@ console.log(props.allAnswers)
             return ( <div key={i} className="form-check">
             <input 
             value={q.val} 
-          
             className="form-check-input" 
             type="radio" 
-            // name={q.val} 
             name="flexRadioDefault" 
             id="flexRadioDefault1" 
             onChange={(e) => {onChangeRadio(e, q);}}
-        checked={q.val==="checked1"? props.answers.checked1: q.val==="checked2"? props.answers.checked2: q.val==="checked3"? props.answers.checked3: q.val==="checked4"? props.answers.checked4: q.val==="checked5"? props.answers.checked5: q.val==="checked6"? props.answers.checked6: q.val==="checked7"? props.answers.checked7: q.val==="checked8"? props.answers.checked8:false}
+            checked={q.val==="checked1"? props.answers.checked1: q.val==="checked2"? props.answers.checked2: q.val==="checked3"? props.answers.checked3: q.val==="checked4"? props.answers.checked4: q.val==="checked5"? props.answers.checked5: q.val==="checked6"? props.answers.checked6: q.val==="checked7"? props.answers.checked7: q.val==="checked8"? props.answers.checked8:false}
                             />
-            <label className="form-check-label" htmlFor="flexRadioDefault1">{q.alt}</label>
+            <label className="ms-4 form-check-label" htmlFor="flexRadioDefault1">{q.alt}</label>
           </div>)
           }):
           props.questions.alternatives.map((q, i) => {
@@ -110,6 +121,7 @@ console.log(props.allAnswers)
             type="button"
             onClick={nextQuestion}
             className="button-style btn"
+            disabled={nextBtn.disabled}
           >
             Next
           </button>
