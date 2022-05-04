@@ -1,0 +1,41 @@
+.first-div {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.second-div {
+  display: table-cell;
+  vertical-align: middle;
+}
+.third-div {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px, 25px;
+  width: 70%;
+  display: flex;
+}
+.image {
+  width: 500px;
+}
+.underline {
+  font-weight: 400;
+  font-size: 18px;
+}
+.right-div {
+  margin-left: 3rem;
+}
+.first-hr {
+  margin-bottom: 4rem;
+  height: 2px;
+  background-color: black;
+  border: none;
+}
+.second-hr {
+  margin-top: 4rem;
+  height: 2px;
+  background-color: black;
+  border: none;
+}
