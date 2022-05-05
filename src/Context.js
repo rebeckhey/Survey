@@ -1,18 +1,15 @@
-// import React, { createContext, useState} from "react";
+import {createContext , useState} from "react";
+// import TestDone from "./components/questionViews/TestDone";
+// import QuestionComponent from "./components/questionViews/questions/QuestionComponent";
+// import ReactDOM from "react-dom/client";
 
-// // create context
-// const UserContext = createContext();
+export const summaryContext = createContext()
 
-// const UserContextProvider = ({ children }) => {
-//   // the value that will be given to the context
-//   const [user, setUser] = useState(null);
-
-//   return (
-//     // the Provider gives access to the context to its children
-//     <UserContext.Provider value={user}>
-//       {children}
-//     </UserContext.Provider>
-//   );
-// };
-
-// export { UserContext, UserContextProvider };
+export const SummaryProvider = (props) => {
+const [summary, setSummary]=useState('empty')
+    return (
+        <summaryContext.Provider value={{summary, setSummary}}>
+            {props.children}
+        </summaryContext.Provider>
+    )
+}

@@ -104,10 +104,6 @@ const ProgressBar = (props) => {
   else{
     progress14.current.classList.remove("active")
   }
-  
- 
-   
-  
  }, [props.questionCounter])
  
   return (

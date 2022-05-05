@@ -27,6 +27,7 @@ console.log(props.companyname.companyname)
         display: "flex",
         flexDirection: "column",
         verticalAlign: "center",
+        width:"70%",
       }}
     >
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -34,13 +35,13 @@ console.log(props.companyname.companyname)
           Before <span className="black-span">we</span> begin
         </h3>
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center", color:"white" }}>
         <h3 className="underline text-center mb-5">
           If you meet the requirements as environmentally friendly, we carry out
-          a cerfificate and therefore need your companyname{" "}
+          a cerfificate and therefore need your companyname
         </h3>
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center"}}>
         <input
           style={{ width: "15em" }}
           type="text"

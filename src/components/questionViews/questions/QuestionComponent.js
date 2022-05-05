@@ -1,7 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { useNavigate } from "react-router-dom";
+import { summaryContext } from "../../../Context";
+
 
 const QuestionComponent = (props) => {
+  const { setSummary } = useContext(summaryContext);
+  let navigate = useNavigate();
   const [nextBtn, setNextBtn]=useState({disabled:true})
+ const [btnText, setBtnText]=useState("Next")
   useEffect(() => {
     if(props.answers.score.length===0){
       setNextBtn({disabled:true})
@@ -9,12 +15,31 @@ const QuestionComponent = (props) => {
     else{
       setNextBtn({disabled:false})
     }
+    if(props.questionCounter.question===15){
+      console.log("15 wiho")
+    }
+    if(props.questionCounter.question===14){
+      setBtnText("Submit")
+    }
+    else{
+      setBtnText("Next")
+    }
   }, [props.questionCounter.question, props.answers.score ])
   
 
   const nextQuestion = () => {
     props.setQuestionCounter({ question: props.questionCounter.question + 1 });
-    
+    if(props.questionCounter.question===14){
+      navigate("/done");
+      let arr =[]
+      props.allAnswers.map(e=>{
+      return e.score.map(er=>{
+        arr.push(er.score)
+       const sum=  arr.reduce((partialSum, a) => partialSum + a, 0)
+       return setSummary(sum)
+    })
+})
+    }
   };
   const previousQuestion = () => {
       props.setQuestionCounter({ question: props.questionCounter.question - 1 });
@@ -24,6 +49,7 @@ const QuestionComponent = (props) => {
       props.setRunTestButton({disabled:false})
   };
   const onChangeRadio=(e, q)=>{
+    //LÄGG TILL FLER CHECKED:FALSE SÅ ATT INTE PROBLEM UPPSTÅR PÅ DE MED MÅNGA SVARSALTERNATIV
     setNextBtn({disabled:false})
     let tempState = [...props.allAnswers];
     let tempElement = { ...tempState[props.questionCounter.question] }
@@ -61,46 +87,41 @@ const QuestionComponent = (props) => {
     props.setAnswers(tempState)
   };
 console.log(props.allAnswers)
-// props.allAnswers && props.allAnswers.map(e=>{
-//     return e.score.map(er=>{
-//         return console.log(er.score)
-//     })
-// })
   return (
     <div className="row col-12 d-flex justify-content-center m-0">
       <div className="col-8">
-        <form className=" bg-white px-4" action="" id="create-course-form">
+        <form className="px-4" action="" id="create-course-form">
           <p className="question-headline">{props.questions.question}</p>
           {props.answers.radio ? props.questions.alternatives.map((q, i) => {
-            return ( <div key={i} className="form-check">
+            return ( <div key={i} className="input-border-width form-check alt-bg ps-5 pt-2 pb-2 mb-2">
             <input 
             value={q.val} 
-            className="form-check-input" 
+            className="form-check-input radio-input" 
             type="radio" 
             name="flexRadioDefault" 
-            id="flexRadioDefault1" 
+            id={q.val}
             onChange={(e) => {onChangeRadio(e, q);}}
             checked={q.val==="checked1"? props.answers.checked1: q.val==="checked2"? props.answers.checked2: q.val==="checked3"? props.answers.checked3: q.val==="checked4"? props.answers.checked4: q.val==="checked5"? props.answers.checked5: q.val==="checked6"? props.answers.checked6: q.val==="checked7"? props.answers.checked7: q.val==="checked8"? props.answers.checked8:false}
                             />
-            <label className="ms-4 form-check-label" htmlFor="flexRadioDefault1">{q.alt}</label>
+            <label className="ms-4 form-check-label label-color" htmlFor={q.val}>{q.alt}</label>
           </div>)
           }):
           props.questions.alternatives.map((q, i) => {
             return (
-              <div key={i} className="form-check mb-2">
+              <div key={i} className="alt-bg input-border-width form-check mb-2 ps-5 pt-2 pb-2">
                 <input
-                  className="form-check-input"
+                  className="form-check-input filled-in"
                   type="checkbox"
                   name={q.name}
                   value={q.val}
                   onChange={(e) => {
                     onChangeCheckbox(e, q);
                   }}
-                  id="flexCheckDefault"
+                  id={q.val}
                   checked={q.val==="checked1"? props.answers.checked1: q.val==="checked2"? props.answers.checked2: q.val==="checked3"? props.answers.checked3: q.val==="checked4"? props.answers.checked4: q.val==="checked5"? props.answers.checked5: q.val==="checked6"? props.answers.checked6: q.val==="checked7"? props.answers.checked7 : q.val==="checked8"? props.answers.checked8: q.val==="checked9"? props.answers.checked9: q.val==="checked10"? props.answers.checked10:false}
                 
                 />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
+                <label className="ms-4 form-check-label label-color" htmlFor={q.val}>
                   {q.alt}
                 </label>
               </div>
@@ -113,7 +134,6 @@ console.log(props.allAnswers)
             type="button"
             onClick={previousQuestion}
             className="button-style btn"
-            // disabled={BackBtnState}
           >
             Back
           </button>
@@ -123,7 +143,7 @@ console.log(props.allAnswers)
             className="button-style btn"
             disabled={nextBtn.disabled}
           >
-            Next
+            {btnText}
           </button>
         </div>
       </div>
