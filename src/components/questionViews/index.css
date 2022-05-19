@@ -36,6 +36,11 @@
   text-transform: uppercase;
   color: white;
 }
+.progressbar li.active{
+ color:#00907d;
+ 
+}
+
 .progressbar li:before {
   width: 10px;
   height: 10px;
@@ -67,6 +72,7 @@
   border-color: #00907d;
   background-color: #00907d;
   transition: all 0.8s;
+  
 }
 .progressbar li.active:after {
   background-color: #00907d;

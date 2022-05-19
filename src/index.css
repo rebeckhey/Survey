@@ -57,3 +57,8 @@ code {
   background-color: white;
   transition: 0.3s;
 } 
+.form-control:focus {
+  border-color: #00907D !important;
+  box-shadow: 0 0 5px #00907D !important;
+}
+

@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { summaryContext } from "../../../Context";
-
+import SendMail from "../../SendMail";
 
 const QuestionComponent = (props) => {
-  const { setSummary } = useContext(summaryContext);
+  const { setSummary, setAccessToRoute, contactInformation} = useContext(summaryContext);
   let navigate = useNavigate();
   const [nextBtn, setNextBtn]=useState({disabled:true})
  const [btnText, setBtnText]=useState("Next")
@@ -24,23 +24,41 @@ const QuestionComponent = (props) => {
     else{
       setBtnText("Next")
     }
-  }, [props.questionCounter.question, props.answers.score ])
   
+ 
+  }, [props.questionCounter.question, props.answers.score ])
+const sending=(n)=>{
+const {companyname, phoneNumber, email}=contactInformation
+SendMail(companyname, phoneNumber, email, n)
+console.log(n)
+navigate("/done");
+}
 
-  const nextQuestion = () => {
+  const nextQuestion =  () => {
     props.setQuestionCounter({ question: props.questionCounter.question + 1 });
+
+    //DETTA SKER NÄR ANVÄNDAREN SKICKAR IN TESTET
     if(props.questionCounter.question===14){
-      navigate("/done");
+      setAccessToRoute(true)
+     
+      //RÄKNR UT POÄNGEN 
       let arr =[]
+      let n=""
       props.allAnswers.map(e=>{
       return e.score.map(er=>{
         arr.push(er.score)
-       const sum=  arr.reduce((partialSum, a) => partialSum + a, 0)
-       return setSummary(sum)
+       const sum= arr.reduce((partialSum, a) => partialSum + a, 0)
+       console.log(sum)
+       n=sum
+      return n
     })
-})
+  
+  })
+  setSummary(n)
+  sending(n)
     }
   };
+  
   const previousQuestion = () => {
       props.setQuestionCounter({ question: props.questionCounter.question - 1 });
       if(props.questionCounter.question===0){
@@ -54,19 +72,25 @@ const QuestionComponent = (props) => {
     let tempState = [...props.allAnswers];
     let tempElement = { ...tempState[props.questionCounter.question] }
     if(e.target.value==="checked1"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
     }
     if(e.target.value==="checked2"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked1:false, checked3:false, checked4:false, checked5:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked1:false, checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
     }
     if(e.target.value==="checked3"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked1:false, checked4:false, checked5:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked1:false, checked4:false, checked5:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
     }
     if(e.target.value==="checked4"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked1:false, checked5:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked1:false, checked5:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
     }
     if(e.target.value==="checked5"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked1:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked1:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
+    }
+    if(e.target.value==="checked6"){
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked1:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
+    }
+    if(e.target.value==="checked7"){
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked1:false, checked6:false, score:[{name:e.target.name, score: q.score}]}
     }
     tempState[props.questionCounter.question] = tempElement
     props.setAnswers(tempState)
