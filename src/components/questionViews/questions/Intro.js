@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { summaryContext } from "../../../Context";
 
+
 const Intro = (props) => {
   const { contactInformation, setContactInformation } =
     useContext(summaryContext);
@@ -61,6 +62,7 @@ const Intro = (props) => {
         </h3>
       </div>
       <form
+      onSubmit={startingTest}
         className=""
         style={{
           backgroundColor: "rgba(32, 97, 92, 0.364)",
@@ -102,6 +104,7 @@ const Intro = (props) => {
           <input
             required
             type="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             id="form3Example3"
             value={contactInformation.email}
             name="email"
@@ -131,7 +134,7 @@ const Intro = (props) => {
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button
-            onClick={startingTest}
+            // onClick={startingTest}
             // disabled={props.runTestButton.disabled}
             // disabled={false}
             style={{ width: "20em" }}

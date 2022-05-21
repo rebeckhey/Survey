@@ -17,6 +17,11 @@ const ProgressBar = (props) => {
   const progress12 = useRef(null)
   const progress13 = useRef(null)
   const progress14 = useRef(null)
+  const progress15 = useRef(null)
+  const progress16 = useRef(null)
+  const progress17 = useRef(null)
+  const progress18 = useRef(null)
+  const progress19 = useRef(null)
   // const progress2 = useRef(null)
  useEffect(() => {
   console.log(props.questionCounter.question)
@@ -104,6 +109,37 @@ const ProgressBar = (props) => {
   else{
     progress14.current.classList.remove("active")
   }
+  if(props.questionCounter.question >= 15){
+    progress15.current.classList.add("active")
+  }
+  else{
+    progress15.current.classList.remove("active")
+  }
+  if(props.questionCounter.question >= 16){
+    progress16.current.classList.add("active")
+  }
+  else{
+    progress16.current.classList.remove("active")
+  }
+  if(props.questionCounter.question >= 17){
+    progress17.current.classList.add("active")
+  }
+  else{
+    progress17.current.classList.remove("active")
+  }
+  if(props.questionCounter.question >= 18){
+    progress18.current.classList.add("active")
+  }
+  else{
+    progress18.current.classList.remove("active")
+  }
+  if(props.questionCounter.question >= 19){
+    progress19.current.classList.add("active")
+  }
+  else{
+    progress19.current.classList.remove("active")
+  }
+  
  }, [props.questionCounter])
  
   return (
@@ -126,6 +162,11 @@ const ProgressBar = (props) => {
             <li ref={progress12}>13</li>
             <li ref={progress13}>14</li>
             <li ref={progress14}>15</li>
+            <li ref={progress15}>16</li>
+            <li ref={progress16}>17</li>
+            <li ref={progress17}>18</li>
+            <li ref={progress18}>19</li>
+            <li ref={progress19}>20</li>
           </ul>
         </div>
       </div>

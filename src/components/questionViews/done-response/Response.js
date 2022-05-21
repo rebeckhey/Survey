@@ -6,7 +6,7 @@ import {summaryContext} from '../../../Context'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PlatinaResponse = () => {
+const PlatinaResponse = (props) => {
   const { summary } = useContext(summaryContext);
 
   const sum= 60-summary
@@ -45,7 +45,7 @@ const PlatinaResponse = () => {
   return (
     <div className="container p-3">
       <h1 className="text-center headline pt-3 m-0">
-        Your business reach gold level!
+        {props.text} <i className="fa-solid fa-medal" style={{color:"grey"}}></i>
       </h1>
       <h4 className="text-center pb-5">
        
@@ -58,7 +58,6 @@ const PlatinaResponse = () => {
             <Doughnut
               height="300px"
               width="300px"
-              // style={{position:"relative"}}
               data={data}
               options={{ maintainAspectRatio: false }}
               plugins={plugins}
@@ -66,13 +65,27 @@ const PlatinaResponse = () => {
             />
 
           </div>
-              <div style={{height:"200px", backgroundColor:"white", width:"200px"}}>
-      <small>Certificate</small>
-        </div>
-        <button>Download pdf</button>
+          <div className="row">
+    <div className="col-md d-flex justify-content-center">
+      <p className="underline">Interested to see what the certificate look like?</p>
+    </div>
+    <div className="col-md d-flex justify-content-center">
+    <p className="underline">Interested to buy the logo-certificate?</p>
+    </div>
+  </div>
+          <div className="row">
+    <div className="col-md d-flex justify-content-center">
+      <button>show pdf</button>
+    </div>
+    <div className="col-md d-flex justify-content-center">
+    <button>buy logo</button>
+    </div>
+  </div>
          
         </div>
+        
       </div>
+      
     </div>
   );
 };

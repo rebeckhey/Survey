@@ -14,7 +14,7 @@
 .third-frame {
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
+  width: 80%;
   height: auto;
   background-color: rgb(28, 21, 21);
   align-items: center;
@@ -28,7 +28,7 @@
 }
 .progressbar li {
   list-style-type: none;
-  width: 6.66%;
+  width: 5%;
   float: left;
   font-size: 10px;
   position: relative;
@@ -79,9 +79,9 @@
   transition: all 0.8s;
 }
 
-.input-border-width {
-  width: 90%;
-}
+/* .input-border-width {
+  width: 100%;
+} */
 input:checked + label {
   color: #00907d;
   font-weight: 700;

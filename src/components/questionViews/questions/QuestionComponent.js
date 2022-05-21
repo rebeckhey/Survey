@@ -113,9 +113,9 @@ navigate("/done");
 console.log(props.allAnswers)
   return (
     <div className="row col-12 d-flex justify-content-center m-0">
-      <div className="col-8">
-        <form className="px-4" action="" id="create-course-form">
-          <p className="question-headline">{props.questions.question}</p>
+      <div className="col-8" >
+        <form className="px-4" action="" id="create-course-form" >
+          <p  className="text-center question-headline">{props.questions.question}</p>
           {props.answers.radio ? props.questions.alternatives.map((q, i) => {
             return ( <div key={i} className="input-border-width form-check alt-bg ps-5 pt-2 pb-2 mb-2">
             <input 
