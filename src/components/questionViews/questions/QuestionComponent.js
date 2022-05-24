@@ -3,9 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { summaryContext } from "../../../Context";
 import SendMail from "../../SendMail";
 
+
 const QuestionComponent = (props) => {
   const { setSummary, setAccessToRoute, contactInformation} = useContext(summaryContext);
   let navigate = useNavigate();
+  console.log(props.allAnswers.score)
+  const alt = props.allAnswers && props.allAnswers.map(e=>{
+    return e.score.map(o=>{
+      return o.name
+    })
+  })
+console.log(props.allAnswers)
   const [nextBtn, setNextBtn]=useState({disabled:true})
  const [btnText, setBtnText]=useState("Next")
   useEffect(() => {
@@ -27,35 +35,32 @@ const QuestionComponent = (props) => {
   
  
   }, [props.questionCounter.question, props.answers.score ])
-const sending=(n)=>{
+const sending=(score)=>{
 const {companyname, phoneNumber, email}=contactInformation
-SendMail(companyname, phoneNumber, email, n)
-console.log(n)
+SendMail(companyname, phoneNumber, email, score, alt)
 navigate("/done");
 }
 
   const nextQuestion =  () => {
-    props.setQuestionCounter({ question: props.questionCounter.question + 1 });
-
+      props.setQuestionCounter({ question: props.questionCounter.question + 1 });
     //DETTA SKER NÄR ANVÄNDAREN SKICKAR IN TESTET
     if(props.questionCounter.question===14){
       setAccessToRoute(true)
-     
       //RÄKNR UT POÄNGEN 
       let arr =[]
-      let n=""
+      let score=""
       props.allAnswers.map(e=>{
       return e.score.map(er=>{
         arr.push(er.score)
        const sum= arr.reduce((partialSum, a) => partialSum + a, 0)
        console.log(sum)
-       n=sum
-      return n
+       score=sum
+      return score
     })
   
   })
-  setSummary(n)
-  sending(n)
+  setSummary(score)
+  sending(score)
     }
   };
   
@@ -67,30 +72,35 @@ navigate("/done");
       props.setRunTestButton({disabled:false})
   };
   const onChangeRadio=(e, q)=>{
-    //LÄGG TILL FLER CHECKED:FALSE SÅ ATT INTE PROBLEM UPPSTÅR PÅ DE MED MÅNGA SVARSALTERNATIV
     setNextBtn({disabled:false})
     let tempState = [...props.allAnswers];
     let tempElement = { ...tempState[props.questionCounter.question] }
     if(e.target.value==="checked1"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, checked8:false,  checked9:false,score:[{name:`*${q.alt}`, score: q.score}]}
     }
     if(e.target.value==="checked2"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked1:false, checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked1:false, checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, checked8:false,  checked9:false,score:[{name:`*${q.alt}`, score: q.score}]} //e.target.name
     }
     if(e.target.value==="checked3"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked1:false, checked4:false, checked5:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked1:false, checked4:false, checked5:false, checked6:false, checked7:false, checked8:false,  checked9:false,score:[{name:`*${q.alt}`, score: q.score}]}
     }
     if(e.target.value==="checked4"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked1:false, checked5:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked1:false, checked5:false, checked6:false, checked7:false, checked8:false,  checked9:false,score:[{name:`*${q.alt}`, score: q.score}]}
     }
     if(e.target.value==="checked5"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked1:false, checked6:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked1:false, checked6:false, checked7:false, checked8:false,  checked9:false,score:[{name:`*${q.alt}`, score: q.score}]}
     }
     if(e.target.value==="checked6"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked1:false, checked7:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked1:false, checked7:false, checked8:false,  checked9:false,score:[{name:`*${q.alt}`, score: q.score}]}
     }
     if(e.target.value==="checked7"){
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked1:false, checked6:false, score:[{name:e.target.name, score: q.score}]}
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked1:false, checked6:false, checked8:false,  checked9:false,score:[{name:`*${q.alt}`, score: q.score}]}
+    }
+    if(e.target.value==="checked8"){
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked1:false, checked6:false, checked7:false, checked9:false, score:[{name:`*${q.alt}`, score: q.score}]}
+    }
+    if(e.target.value==="checked9"){
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, checked2:false, checked3:false, checked4:false, checked5:false, checked1:false, checked6:false, checked7:false, checked8:false, score:[{name:`*${q.alt}`, score: q.score}]}
     }
     tempState[props.questionCounter.question] = tempElement
     props.setAnswers(tempState)
@@ -100,17 +110,16 @@ navigate("/done");
     let tempState = [...props.allAnswers];
     let tempElement = { ...tempState[props.questionCounter.question] }
     if(e.target.checked){
-      tempElement = {...props.answers, [e.target.value]:e.target.checked, score:[...props.answers.score,{name:e.target.name, score: q.score}]}
+      tempElement = {...props.answers, [e.target.value]:e.target.checked, score:[...props.answers.score,{name:`+${q.alt}`, change:e.target.name, score: q.score}]}
       setNextBtn({disabled:false})
     }
     else{
         const scoreArr=[...props.answers.score]
-        tempElement = {...props.answers, [e.target.value]:e.target.checked, score:scoreArr.filter(o => o.name !== e.target.name)} 
+        tempElement = {...props.answers, [e.target.value]:e.target.checked, score:scoreArr.filter(o => o.change !== e.target.name)} 
     }
     tempState[props.questionCounter.question] = tempElement
     props.setAnswers(tempState)
   };
-console.log(props.allAnswers)
   return (
     <div className="row col-12 d-flex justify-content-center m-0">
       <div className="col-8" >

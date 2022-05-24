@@ -8,8 +8,6 @@ const Intro = (props) => {
 
   // const [runTestButton, setRunTestButton]=useState({disabled:true})
   const contactInput = (e) => {
-    console.log(e.target.value);
-
     if (e.target.type === "checkbox") {
       setContactInformation({
         ...contactInformation,
@@ -27,7 +25,6 @@ const Intro = (props) => {
       });
     }
   };
-  console.log(contactInformation);
   const startingTest = () => {
     if (
       contactInformation.companyname !== "" &&

@@ -103,12 +103,32 @@ doc.setGState(new doc.GState({opacity: 0.7 }));
             </small>
           </div>
           <div className="text-center mb-5">
-            <small className="text-center green-text">
+            <small className="text-center green-text" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
               Click here if you are interested in buying the certificate!
             </small>
           </div>
         </div>
       </div>
+<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Buy our certificate to impress your clients!</h5>
+        <button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+        <p className="text-center">{contactInformation.companyname}</p>
+        <p className="text-center">{contactInformation.email}</p>
+        </div>
+      <div className="modal-footer d-flex justify-content-center">
+        <button type="button" className="button-style btn" data-mdb-dismiss="modal">Contact me</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
     </div>
   );
 };

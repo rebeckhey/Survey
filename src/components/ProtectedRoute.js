@@ -10,7 +10,7 @@ const PrivateRoute = () => {
   return accessToRoute ? (
     <Outlet />
   ) : (
-    <Navigate to="/start" replace state={{ from: location }} />
+    <Navigate to="/" replace state={{ from: location }} />
   );
 };
 
