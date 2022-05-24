@@ -65,3 +65,13 @@ code {
   font-weight: 400;
   font-size: 18px;
 }
+.green-text{
+  color:#00907D;
+  font-size: 22px;
+  text-decoration: underline;
+  
+}
+.green-text:hover{
+  cursor:pointer;
+  color:#81f2e389;
+}

@@ -1,15 +1,51 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import {summaryContext} from '../../../Context'
-
+import { summaryContext } from "../../../Context";
+import { jsPDF } from "jspdf";
+import cert from "../../images/G-digitcertifikat1024_1.jpg";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
 const PlatinaResponse = (props) => {
-  const { summary } = useContext(summaryContext);
+  const { summary, contactInformation } = useContext(summaryContext);
+  function addWaterMark(doc) {
+    var totalPages = doc.internal.getNumberOfPages();
+    let i
+    for (i = 1; i <= totalPages; i++) {
+      doc.setPage(i);
+      doc.setTextColor(140);
+      doc.setFontSize(80)
+      doc.saveGraphicsState();
+doc.setGState(new doc.GState({opacity: 0.7 }));
+      doc.text(50, doc.internal.pageSize.height - 150, 'Your eyes only');
+      doc.restoreGraphicsState();
+    }
+    return doc;
+  }
+  function addCompanyName(doc) {
+    var totalPages = doc.internal.getNumberOfPages();
+    let i
+    for (i = 1; i <= totalPages; i++) {
+      doc.setPage(i);
+      doc.setTextColor(0);
+      doc.setFontSize(20)
+      doc.setFont('Time-BoldItalic')
+      doc.text(110, doc.internal.pageSize.height - 85, contactInformation.companyname);
+    }
+    return doc;
+  }
+  
+  const pdfmakedownload = () => {
+    var img = new Image();
+    img.src = cert;
+    var doc = new jsPDF('l', 'mm', [275, 200]);
+    doc.addImage(img, "JPEG", 1, 2);
+    doc = addWaterMark(doc);
+    doc = addCompanyName(doc)
+    doc.save("certificate.pdf");
+  };
 
-  const sum= 60-summary
+  const sum = 60 - summary;
   const data = {
     labels: [],
     datasets: [
@@ -32,7 +68,7 @@ const PlatinaResponse = (props) => {
         ctx.restore();
         var fontSize = (height / 140).toFixed(2);
         ctx.font = fontSize + "em Montserrat";
-        ctx.fillStyle="rgba(0, 144, 125, 0.5)"
+        ctx.fillStyle = "rgba(0, 144, 125, 0.5)";
         ctx.textBaseline = "middle";
         var text = `${summary}/60`,
           textX = Math.round((width - ctx.measureText(text).width) / 2),
@@ -44,48 +80,35 @@ const PlatinaResponse = (props) => {
   ];
   return (
     <div className="container p-3">
-      <h1 className="text-center headline pt-3 m-0">
-        {props.text} <i className="fa-solid fa-medal" style={{color:"grey"}}></i>
-      </h1>
-      <h4 className="text-center pb-5">
-       
-      </h4>
+      <h1 className="text-center headline pt-3 m-0 mb-5">{props.text}</h1>
       <div>
         <div>
-     
-       
-          <div className="mb-5" >
+          <div className="mb-5">
             <Doughnut
               height="300px"
               width="300px"
               data={data}
               options={{ maintainAspectRatio: false }}
               plugins={plugins}
-             
             />
-
           </div>
-          <div className="row">
-    <div className="col-md d-flex justify-content-center">
-      <p className="underline">Interested to see what the certificate look like?</p>
-    </div>
-    <div className="col-md d-flex justify-content-center">
-    <p className="underline">Interested to buy the logo-certificate?</p>
-    </div>
-  </div>
-          <div className="row">
-    <div className="col-md d-flex justify-content-center">
-      <button>show pdf</button>
-    </div>
-    <div className="col-md d-flex justify-content-center">
-    <button>buy logo</button>
-    </div>
-  </div>
-         
+          <div className="text-center">
+            <small
+              onClick={() => {
+                pdfmakedownload();
+              }}
+              className="text-center green-text"
+            >
+              Click here to show the certificate!
+            </small>
+          </div>
+          <div className="text-center mb-5">
+            <small className="text-center green-text">
+              Click here if you are interested in buying the certificate!
+            </small>
+          </div>
         </div>
-        
       </div>
-      
     </div>
   );
 };
