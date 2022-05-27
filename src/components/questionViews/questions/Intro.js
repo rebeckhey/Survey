@@ -126,7 +126,8 @@ const Intro = (props) => {
             htmlFor="form2Example33"
             style={{ color: "white" }}
           >
-            I accept to be contacted
+            I accept <span className="terms"    data-mdb-toggle="modal"
+                  data-mdb-target="#exampleModal">terms and conditions</span>
           </label>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -142,6 +143,33 @@ const Intro = (props) => {
           </button>
         </div>
       </form>
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog mod-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Terms and conditions
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-mdb-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body mod-body">
+             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+           
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

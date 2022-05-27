@@ -75,3 +75,13 @@ code {
   cursor:pointer;
   color:#81f2e389;
 }
+.terms:hover{
+  text-decoration: underline;
+}
+.mod-dialog{
+  overflow-y: initial !important
+}
+.mod-body{
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
