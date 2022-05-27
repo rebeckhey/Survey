@@ -11,8 +11,8 @@ const Frame = () => {
   {id:0,checked1:false,checked2:false,checked3:false,checked4:false, checked5:false, score: [], radio:true},
   {id:1, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
   {id:2, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], checked6:false, checked7:false, checked8:false, checked9:false, checked10:false,radio:false}, 
-  {id:3, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], checked6:false, checked7:false, checked8:false, radio:false},
   {id:4, checked1:false, checked2:false,  checked3:false,  score: [], radio:true},
+  {id:3, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], checked6:false, checked7:false, checked8:false, radio:false},
   {id:5, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
   {id:6, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
   {id:7, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
@@ -22,7 +22,12 @@ const Frame = () => {
   {id:11, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
   {id:12, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, score: [], radio:true},
   {id:13, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
-  {id:14, checked1:false, checked2:false,  checked3:false, checked4:false, checked6:false, checked7:false, checked8:false, checked9:false, score: [], radio:true},
+  {id:14, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, checked8:false, checked9:false, score: [], radio:true},
+  {id:15, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
+  {id:16, checked1:false, checked2:false,  checked3:false,  score: [], radio:true},
+  {id:17, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
+  {id:18, checked1:false, checked2:false,  checked3:false, score: [], radio:true},
+  {id:19, checked1:false, checked2:false,  checked3:false, score: [], radio:true},
 ])
 const [runTestButton, setRunTestButton]=useState({disabled:true})
 

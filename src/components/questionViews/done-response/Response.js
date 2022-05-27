@@ -45,7 +45,7 @@ doc.setGState(new doc.GState({opacity: 0.7 }));
     doc.save("certificate.pdf");
   };
 
-  const sum = 60 - summary;
+  const sum = 72 - summary;
   const data = {
     labels: [],
     datasets: [
@@ -70,7 +70,7 @@ doc.setGState(new doc.GState({opacity: 0.7 }));
         ctx.font = fontSize + "em Montserrat";
         ctx.fillStyle = "rgba(0, 144, 125, 0.5)";
         ctx.textBaseline = "middle";
-        var text = `${summary}/60`,
+        var text = `${summary}/72`,
           textX = Math.round((width - ctx.measureText(text).width) / 2),
           textY = height / 2;
         ctx.fillText(text, textX, textY);
@@ -92,6 +92,9 @@ doc.setGState(new doc.GState({opacity: 0.7 }));
               plugins={plugins}
             />
           </div>
+          { summary >=10 ?
+         
+          <div>
           <div className="text-center">
             <small
               onClick={() => {
@@ -107,9 +110,15 @@ doc.setGState(new doc.GState({opacity: 0.7 }));
               Click here if you are interested in buying the certificate!
             </small>
           </div>
+          </div>:
+          <div>
+           Need some help to improve your business climate footprint? contact us at info@g-digit.com and we are happy to help you!
+          </div>
+ }
+
         </div>
       </div>
-<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">

@@ -26,7 +26,7 @@ console.log(props.allAnswers)
     if(props.questionCounter.question===15){
       console.log("15 wiho")
     }
-    if(props.questionCounter.question===14){
+    if(props.questionCounter.question===19){
       setBtnText("Submit")
     }
     else{
@@ -44,7 +44,7 @@ navigate("/done");
   const nextQuestion =  () => {
       props.setQuestionCounter({ question: props.questionCounter.question + 1 });
     //DETTA SKER NÄR ANVÄNDAREN SKICKAR IN TESTET
-    if(props.questionCounter.question===14){
+    if(props.questionCounter.question===19){
       setAccessToRoute(true)
       //RÄKNR UT POÄNGEN 
       let arr =[]
@@ -134,7 +134,7 @@ navigate("/done");
             name="flexRadioDefault" 
             id={q.val}
             onChange={(e) => {onChangeRadio(e, q);}}
-            checked={q.val==="checked1"? props.answers.checked1: q.val==="checked2"? props.answers.checked2: q.val==="checked3"? props.answers.checked3: q.val==="checked4"? props.answers.checked4: q.val==="checked5"? props.answers.checked5: q.val==="checked6"? props.answers.checked6: q.val==="checked7"? props.answers.checked7: q.val==="checked8"? props.answers.checked8:false}
+            checked={q.val==="checked1"? props.answers.checked1: q.val==="checked2"? props.answers.checked2: q.val==="checked3"? props.answers.checked3: q.val==="checked4"? props.answers.checked4: q.val==="checked5"? props.answers.checked5: q.val==="checked6"? props.answers.checked6: q.val==="checked7"? props.answers.checked7: q.val==="checked8"? props.answers.checked8: q.val==="checked9"? props.answers.checked9:false}
                             />
             <label className="ms-4 form-check-label label-color" htmlFor={q.val}>{q.alt}</label>
           </div>)

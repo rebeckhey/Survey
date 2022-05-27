@@ -35,7 +35,15 @@ export const questions = [
     ],
   },
   {
-    question: "4. Which of the SDGs do you work with?",
+    question: "4. Is your data center certified green?",
+    alternatives: [
+      { alt: "Yes", val: "checked1", score: 1, name: "input1" },
+      { alt: "No", val: "checked2", score: 0, name: "input2" },
+      { alt: "Don't know", val: "checked3", score: 0, name: "input3" },
+    ],
+  },
+  {
+    question: "5. Which of the SDGs do you work with?",
     alternatives: [
       { alt: "7", val: "checked1", score: 1, name: "input1" },
       { alt: "8", val: "checked2", score: 1, name: "input2" },
@@ -47,14 +55,7 @@ export const questions = [
       { alt: "None", val: "checked8", score: 0, name: "input8" },
     ],
   },
-  {
-    question: "5. Is your data center certified green?",
-    alternatives: [
-      { alt: "Yes", val: "checked1", score: 1, name: "input1" },
-      { alt: "No", val: "checked2", score: 0, name: "input2" },
-      { alt: "Don't know", val: "checked3", score: 0, name: "input3" },
-    ],
-  },
+ 
   {
     question: "6. Which Certifications does your web host have?",
     alternatives: [
@@ -169,10 +170,11 @@ export const questions = [
     ],
   },
   {
-    question: "17. How does your company encourage fellow employees to manage their IT environment?",
+    question: "17. Does your company monitor/record/ report its e-waste?",
     alternatives: [
-      { alt: "?", val: "checked1", score: 3, name: "input1" },
-      //VILKA ALTERNATIV?
+      { alt: "Monitor", val: "checked1", score: 2, name: "input1" },
+      { alt: "Record", val: "checked2", score: 0, name: "input2" },
+      { alt: "Report", val: "checked3", score: 1, name: "input3" }
     ],
   },
   {
@@ -185,15 +187,16 @@ export const questions = [
     ],
   },
   {
-    question: "19. Does your company have management system covering IT environment?",
+    question: "19. Does your company have an environmental policy? ?",
     alternatives: [
       { alt: "Yes", val: "checked1", score: 2, name: "input1" },
       { alt: "No", val: "checked2", score: 0, name: "input2" },
-      { alt: "In progress", val: "checked3", score: 1, name: "input3" }
+      { alt: "In progress", val: "checked3", score: 1, name: "input3" },
     ],
   },
+
   {
-    question: "20. Does your company monitor/record/report its energy usage/e-waste?",
+    question: "20. Does your company monitor/record/report its energy usage?",
     alternatives: [
       { alt: "Monitor", val: "checked1", score: 2, name: "input1" },
       { alt: "Record", val: "checked2", score: 0, name: "input2" },
