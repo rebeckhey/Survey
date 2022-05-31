@@ -3,7 +3,11 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { summaryContext } from "../../../Context";
 import { jsPDF } from "jspdf";
-import cert from "../../images/G-digitcertifikat1024_1.jpg";
+// import cert from "../../images/G-digitcertifikat1024_1.jpg";
+import gold from '../../images/certifikat-guld.jpeg'
+import silver from '../../images/certifikat-silver.jpeg'
+import bronze from '../../images/certifikat-brons.jpg'
+import copper from '../../images/certifikat-koppar.jpg'
 import SendBuyMail from "../../SendBuyEmail";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -42,9 +46,25 @@ const PlatinaResponse = (props) => {
 
   const pdfmakedownload = () => {
     var img = new Image();
-    img.src = cert;
+    // img.src = cert;
+    if(summary >= 40){
+      img.src = gold
+    }
+    else if(summary >= 30){
+      img.src = silver
+    }
+    else if(summary >= 20){
+      img.src = bronze
+    }
+    else if(summary >= 10){
+      img.src = copper
+    }
+    
     var doc = new jsPDF("l", "mm", [275, 200]);
-    doc.addImage(img, "JPEG", 1, 2);
+    // doc.addImage(img, "JPEG", 1, 2);
+    doc.addImage(img, "JPEG", 1, 2, 272, 180);
+   
+
     doc = addWaterMark(doc);
     doc = addCompanyName(doc);
     doc.save("certificate.pdf");
