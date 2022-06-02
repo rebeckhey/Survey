@@ -164,7 +164,14 @@ const Intro = (props) => {
               ></button>
             </div>
             <div className="modal-body mod-body">
-             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+             <p>
+               1. In order to use the service, you must firstly agree to terms and conditions. You may not use the service if you do not accept. <br/>
+               2. G-digIT never share your personal information with third part. <br/>
+               3. Data that is saved in this form is only shared with the user. <br/>
+               4. By accepting terms and conditions, the user certifies that the shared data is correct. If the data is not correct, there is a risk of green washing. <br/>
+               5. The user can at any time ask for deleting the saved data by email to info@g-digit.com <br/>
+               6. The purpose is to rise the awareness of green ICT and demonstrate a company commitment towards achieving Agenda2030. 
+             </p>
             </div>
            
           </div>

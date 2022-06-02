@@ -5,7 +5,6 @@ import Frame from './components/questionViews/Frame';
 import TestDone from './components/questionViews/TestDone';
 import {SummaryProvider} from './Context'
 import PrivateRoute from './components/ProtectedRoute';
-
 function App() {
   return (
         <SummaryProvider>

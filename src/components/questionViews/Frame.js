@@ -8,35 +8,32 @@ const Frame = () => {
   const [startTest, setStartTest]=useState(true)
   const [questionCounter, setQuestionCounter]=useState({question:null})
   const [answers, setAnswers]=useState([
-  {id:0,checked1:false,checked2:false,checked3:false,checked4:false, checked5:false, score: [], radio:true},
-  {id:1, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
-  {id:2, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], checked6:false, checked7:false, checked8:false, checked9:false, checked10:false,radio:false}, 
-  {id:4, checked1:false, checked2:false,  checked3:false,  score: [], radio:true},
-  {id:3, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], checked6:false, checked7:false, checked8:false, radio:false},
-  {id:5, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
-  {id:6, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
-  {id:7, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
-  {id:8, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
-  {id:9, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
-  {id:10, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
-  {id:11, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
-  {id:12, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, score: [], radio:true},
-  {id:13, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
-  {id:14, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, checked8:false, checked9:false, score: [], radio:true},
-  {id:15, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
-  {id:16, checked1:false, checked2:false,  checked3:false,  score: [], radio:true},
-  {id:17, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
-  {id:18, checked1:false, checked2:false,  checked3:false, score: [], radio:true},
-  {id:19, checked1:false, checked2:false,  checked3:false, score: [], radio:true},
+    {id:1, checked1:false, checked2:false,  checked3:false, score: [], radio:true},
+    {id:2, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
+    {id:3, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
+    {id:4, checked1:false, checked2:false,  checked3:false, score: [], radio:true},
+    {id:5, checked1:false, checked2:false,  checked3:false,  score: [], radio:true},
+    {id:6, checked1:false, checked2:false,  score: [], radio:true},
+    {id:7, checked1:false, checked2:false, checked3:false, checked4:false, checked5:false, score: [], radio:true},
+    {id:8, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
+    {id:9, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], checked6:false, checked7:false, checked8:false, checked9:false, checked10:false,radio:false}, 
+    {id:10, checked1:false, checked2:false,  checked3:false,  score: [], radio:true},
+    {id:11, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], checked6:false, checked7:false, checked8:false, radio:false},
+    {id:12, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
+    {id:13, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
+    {id:14, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
+    {id:15, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
+    {id:16, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
+    {id:17, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, score: [], radio:true},
+    {id:18, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, score: [], radio:true},
+    {id:19, checked1:false, checked2:false,  checked3:false, checked4:false, score: [], radio:true},
+    {id:20, checked1:false, checked2:false,  checked3:false, checked4:false, checked5:false, checked6:false, checked7:false, checked8:false, checked9:false, score: [], radio:true},
 ])
 const [runTestButton, setRunTestButton]=useState({disabled:true})
 
   return (
     <div className="first-frame">
-      
       <div className="second-frame">
-  
-
         {
           startTest ? 
           <div className="third-frame" style={{display:"flex", width:"60%", paddingBottom:"3rem", paddingTop:"3rem"}}>

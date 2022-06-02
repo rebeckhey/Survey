@@ -22,7 +22,7 @@ const PlatinaResponse = (props) => {
       doc.setFontSize(80);
       doc.saveGraphicsState();
       doc.setGState(new doc.GState({ opacity: 0.7 }));
-      doc.text(50, doc.internal.pageSize.height - 150, "Your eyes only");
+      doc.text(40, doc.internal.pageSize.height - 140, "Your eyes only");
       doc.restoreGraphicsState();
     }
     return doc;
@@ -36,8 +36,8 @@ const PlatinaResponse = (props) => {
       doc.setFontSize(20);
       doc.setFont("Time-BoldItalic");
       doc.text(
-        110,
-        doc.internal.pageSize.height - 85,
+        95,
+        doc.internal.pageSize.height - 75,
         contactInformation.companyname
       );
     }
@@ -60,9 +60,9 @@ const PlatinaResponse = (props) => {
       img.src = copper
     }
     
-    var doc = new jsPDF("l", "mm", [275, 200]);
+    var doc = new jsPDF("l", "mm", [245, 200]);
     // doc.addImage(img, "JPEG", 1, 2);
-    doc.addImage(img, "JPEG", 1, 2, 272, 180);
+    doc.addImage(img, "JPEG", 1, 2, 242, 200);
    
 
     doc = addWaterMark(doc);
@@ -70,7 +70,7 @@ const PlatinaResponse = (props) => {
     doc.save("certificate.pdf");
   };
 
-  const sum = 72 - summary;
+  const sum = 71 - summary;
   const data = {
     labels: [],
     datasets: [
@@ -95,7 +95,7 @@ const PlatinaResponse = (props) => {
         ctx.font = fontSize + "em Montserrat";
         ctx.fillStyle = "rgba(0, 144, 125, 0.5)";
         ctx.textBaseline = "middle";
-        var text = `${summary}/72`,
+        var text = `${summary}/71`,
           textX = Math.round((width - ctx.measureText(text).width) / 2),
           textY = height / 2;
         ctx.fillText(text, textX, textY);
@@ -173,6 +173,7 @@ const PlatinaResponse = (props) => {
             </div>
             <div className="modal-body">
               <p className="text-center">{contactInformation.companyname}</p>
+              <p className="text-center">{contactInformation.phoneNumber}</p>
               <p className="text-center">{contactInformation.email}</p>
             </div>
             <div className="modal-footer d-flex justify-content-center">
