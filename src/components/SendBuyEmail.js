@@ -7,7 +7,7 @@ const SendBuyMail = (companyname, phonenumber, email) => {
         phonenumber: phonenumber,
         email:email,
     };
-    emailjs.send('service_djc76ah','template_mnefkx8', templateParams, 'Wj-nkAKRC-V30DTQX')
+    emailjs.send(process.env.REACT_APP_EMAILKEY,process.env.REACT_APP_TEMPLATE_2, templateParams, process.env.REACT_APP_PUBLIC_KEY)
         .then((response) => {
            console.log('SUCCESS!', response.status, response.text);
         }, (err) => {

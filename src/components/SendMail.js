@@ -9,7 +9,7 @@ const SendMail = (companyname, phonenumber, email, summary, answers) => {
         score:summary,
         answers:answers
     };
-    emailjs.send('service_djc76ah','template_teofawd', templateParams, 'Wj-nkAKRC-V30DTQX')
+    emailjs.send(process.env.REACT_APP_EMAILKEY,process.env.REACT_APP_TEMPLATE_1, templateParams, process.env.REACT_APP_PUBLIC_KEY)
         .then((response) => {
            console.log('SUCCESS!', response.status, response.text);
         }, (err) => {
