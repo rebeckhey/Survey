@@ -39,12 +39,7 @@ const Intro = (props) => {
   return (
     <div
       className="container"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        verticalAlign: "center",
-        width: "70%",
-      }}
+      
     >
       <div style={{ display: "flex", justifyContent: "center" }}>
         <h3 className="headline text-center mb-3">

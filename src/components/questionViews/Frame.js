@@ -36,7 +36,7 @@ const [runTestButton, setRunTestButton]=useState({disabled:true})
       <div className="second-frame">
         {
           startTest ? 
-          <div className="third-frame" style={{display:"flex", width:"60%", paddingBottom:"3rem", paddingTop:"3rem"}}>
+          <div className="third-frame" style={{display:"flex", paddingBottom:"3rem", paddingTop:"3rem"}}>
           <Intro setRunTestButton={setRunTestButton} runTestButton={runTestButton}setStartTest={setStartTest} setQuestionCounter={setQuestionCounter}/> 
           </div>
           :

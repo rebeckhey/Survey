@@ -121,8 +121,8 @@ navigate("/done");
     props.setAnswers(tempState)
   };
   return (
-    <div className="row col-12 d-flex justify-content-center m-0">
-      <div className="col-8" >
+    <div className="question-width row col-12 d-flex justify-content-center m-0">
+      <div className="col-md-8 col-12" >
         <form className="px-4" action="" id="create-course-form" >
           <p  className="text-center question-headline">{props.questions.question}</p>
           {props.answers.radio ? props.questions.alternatives.map((q, i) => {

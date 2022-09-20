@@ -33,13 +33,7 @@ code {
   /* color: #313131; */
   color:white;
 }
-.question-headline{
-  font-size: 24px;
-  color: #00907d;
-  /* color:white; */
-  font-weight: 700;
-  margin-bottom: 3rem;
-}
+
 .button-style {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -85,3 +79,4 @@ code {
   max-height: calc(100vh - 200px);
   overflow-y: auto;
 }
+
